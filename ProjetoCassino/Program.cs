@@ -4,13 +4,13 @@
     {
         static Random rnd = new Random();
         static string nome = "";
-        static int saldo = 100;
+        static double saldo = 100;
 
         static void Main(string[] args)
         {
 
             Console.WriteLine("Eai, qual teu vulgo?");
-            nome = Console.ReadLine();
+            nome = Console.ReadLine(); 
 
             int op = 1;
             while(op != 0)
@@ -45,7 +45,7 @@
                 Console.Clear();
                 Console.WriteLine($"Bem vindo a tua carteira {nome}. Seu saldo atual é: R${saldo}");
                 Console.WriteLine("Escolha as seguintes opções:");
-                Console.WriteLine("1-Levantamento");
+                Console.WriteLine("1-Saque");
                 Console.WriteLine("2-Depósitos");
                 Console.WriteLine("0-Sair");
                 op = int.Parse(Console.ReadLine());
@@ -53,7 +53,7 @@
                 switch (op)
                 {
                     case 0:                 break;
-                    case 1: Levantamento(); break;
+                    case 1: Saque();        break;
                     case 2: Depositos();    break;
                     default: Console.WriteLine("Ops, opção inválida :p");
                         Console.ReadKey();  break;
@@ -65,12 +65,35 @@
         {
             Console.Clear();
 
-            Console.WriteLine("");
+            Console.WriteLine($"Saldo atual: R${saldo}");
+            Console.WriteLine("Qual valor deseja depositar?");
+            double valor = double.Parse(Console.ReadLine());
+
+            saldo += valor;
+
+            Console.WriteLine($"Depósito realizado com sucesso! Seu saldo é de: R${saldo}");
+            Console.ReadKey();
         }
 
-        private static void Levantamento()
+        private static void Saque()
         {
-            throw new NotImplementedException();
+            Console.Clear();
+
+            Console.WriteLine($"Saldo atual: R${saldo}");
+            Console.WriteLine("Qual valor deseja sacar?");
+            double valor = double.Parse(Console.ReadLine());
+
+            saldo -= valor;
+
+            if (saldo - valor < 0)
+            {
+                Console.WriteLine("Saldo Insuficiente");
+            }
+            else
+            {
+                Console.WriteLine($"Saque realizado com sucesso! Seu saldo é de: R${saldo}");
+                Console.ReadKey();
+            }
         }
 
         private static void Raspadinhas()
