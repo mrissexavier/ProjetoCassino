@@ -3,21 +3,24 @@
     class Program
     {
         static Random rnd = new Random();
+        static string nome = "";
+        static int saldo = 100;
+
         static void Main(string[] args)
         {
-            /* ---------------------- MENU ---------------------- */
 
             Console.WriteLine("Eai, qual teu vulgo?");
-            string nome = Console.ReadLine();
+            nome = Console.ReadLine();
 
             int op = 1;
             while(op != 0)
             {
                 Console.Clear();
-                Console.WriteLine($"Chega mais {nome}!");
+                Console.WriteLine($"Chega mais {nome}! Seu saldo é de: R${saldo}");
                 Console.WriteLine("Escolha uma das seguintes opções:");
                 Console.WriteLine("1-Loteria");
                 Console.WriteLine("2-Raspadinha");
+                Console.WriteLine("3-Carteira");
                 Console.WriteLine("0-Sair");
                 op = int.Parse(Console.ReadLine());
 
@@ -26,10 +29,48 @@
                     case 0:                break;
                     case 1: Loteria();     break;
                     case 2: Raspadinhas(); break;
+                    case 3: Carteira();    break;
                     default: Console.WriteLine("Ops, opção inválida :p"); 
                         Console.ReadKey(); break;
                 }
             }
+        }
+
+        private static void Carteira()
+        {
+            int op = 1;
+
+            while(op != 0)
+            {
+                Console.Clear();
+                Console.WriteLine($"Bem vindo a tua carteira {nome}. Seu saldo atual é: R${saldo}");
+                Console.WriteLine("Escolha as seguintes opções:");
+                Console.WriteLine("1-Levantamento");
+                Console.WriteLine("2-Depósitos");
+                Console.WriteLine("0-Sair");
+                op = int.Parse(Console.ReadLine());
+
+                switch (op)
+                {
+                    case 0:                 break;
+                    case 1: Levantamento(); break;
+                    case 2: Depositos();    break;
+                    default: Console.WriteLine("Ops, opção inválida :p");
+                        Console.ReadKey();  break;
+                }
+            }
+        }
+
+        private static void Depositos()
+        {
+            Console.Clear();
+
+            Console.WriteLine("");
+        }
+
+        private static void Levantamento()
+        {
+            throw new NotImplementedException();
         }
 
         private static void Raspadinhas()
