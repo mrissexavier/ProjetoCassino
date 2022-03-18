@@ -2,6 +2,7 @@
 {
     class Program
     {
+        static Random rnd = new Random();
         static void Main(string[] args)
         {
             /* ---------------------- MENU ---------------------- */
@@ -13,7 +14,7 @@
             while(op != 0)
             {
                 Console.Clear();
-                Console.WriteLine($"Sinta-se em casa {nome}! (>‿◠)✌");
+                Console.WriteLine($"Chega mais {nome}!");
                 Console.WriteLine("Escolha uma das seguintes opções:");
                 Console.WriteLine("1-Loteria");
                 Console.WriteLine("2-Raspadinha");
@@ -64,20 +65,44 @@
 
         private static void RaspadinhaB()
         {
-            Random rnd = new Random();
-            int num1 = rnd.Next(1, 10);
         }
 
         private static void RaspadinhaA()
         {
-            Random rnd = new Random();
-            int num1 = rnd.Next(1, 10);
         }
 
         private static void Loteria()
         {
-            Random rnd = new Random();
-            int num1 = rnd.Next(1, 10);
+            Console.Clear();
+            int numPremiado = rnd.Next(1000, 10000);
+            int numJogador = 0;
+
+            while(numJogador < 1000 || numJogador > 9999)
+            {
+                Console.WriteLine("Qual o número da vez? (1.000-9.999");
+                numJogador = int.Parse(Console.ReadLine());
+            }
+
+            Console.WriteLine($"Bilhete premiado: {numPremiado}");
+
+            if (numPremiado == numJogador)
+            {
+                Console.WriteLine("Chave mlk, ganhou o 1º prémio!");
+            }
+            else if (numPremiado % 1000 == numJogador % 1000)
+            {
+                Console.WriteLine("Pica pae, ganhou o 2º prémio!");
+
+            }
+            else if (numPremiado % 100 == numJogador % 100)
+            {
+                Console.WriteLine("Mlk de ouro, ganhou o 3º prémio!");
+            }
+            else
+            {
+                Console.WriteLine("Não foi dessa vez, mas não desanima não!");
+            }
+            Console.ReadKey();
         }
     }
 }
