@@ -131,6 +131,12 @@
         private static void RaspadinhaB()
         {
             Console.Clear();
+              if(saldo - 2 < 0)
+            {
+                Console.WriteLine("Saldo insuficiente :( Realize um depósito antes de jogar.");
+                Console.ReadKey();
+                return;
+            }
 
             int numPrincipal = rnd.Next(1, 10);
             int premio = rnd.Next(1, 100);
@@ -162,7 +168,10 @@
             Console.WriteLine($"{num7}  {num8}  {num9}");
 
             if(contador >= 3)
+            {
                 Console.WriteLine($"Boa mlk, ganhou R${premio}");
+                saldo += premio;
+            }
             else
                 Console.WriteLine("Ops, raspadinha não premiada");
             
@@ -171,7 +180,13 @@
 
         private static void RaspadinhaA()
         {
-            Console.Clear();    
+            Console.Clear();
+            if(saldo - 2 < 0)
+            {
+                Console.WriteLine("Saldo insuficiente :( Realize um depósito antes de jogar.");
+                Console.ReadKey();
+                return;
+            }
 
             int numPrincipal = rnd.Next(1, 10);
             int num1 = rnd.Next(1, 10); int premio1 = rnd.Next(1, 100);
@@ -196,7 +211,8 @@
             if (num5 == numPrincipal) premio += premio5;
 
             Console.WriteLine($"Premio: R${premio}");
-
+            
+            saldo += premio;
 
             Console.ReadKey();
 
@@ -205,6 +221,13 @@
         private static void Loteria()
         {
             Console.Clear();
+            if(saldo - 5 < 0)
+            {
+                Console.WriteLine("Saldo insuficiente :( Realize um depósito antes de jogar.");
+                Console.ReadKey();
+                return;
+            }
+            
             int numPremiado = rnd.Next(1000, 10000);
             int numJogador = 0;
 
@@ -220,15 +243,18 @@
             if (numPremiado == numJogador)
             {
                 Console.WriteLine("Chave mlk, ganhou o 1º premio!");
+                saldo += 10000;
             }
             else if (numPremiado % 1000 == numJogador % 1000)
             {
                 Console.WriteLine("Pica pae, ganhou o 2º premio!");
+                saldo += 1000;
 
             }
             else if (numPremiado % 100 == numJogador % 100)
             {
                 Console.WriteLine("Mlk de ouro, ganhou o 3º premio!");
+                saldo += 100;
             }
             else
             {
