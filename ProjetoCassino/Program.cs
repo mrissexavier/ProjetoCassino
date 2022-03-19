@@ -137,6 +137,8 @@
                 Console.ReadKey();
                 return;
             }
+            
+            saldo -= 2;
 
             int numPrincipal = rnd.Next(1, 10);
             int premio = rnd.Next(1, 100);
@@ -187,6 +189,8 @@
                 Console.ReadKey();
                 return;
             }
+            
+            saldo -= 2;
 
             int numPrincipal = rnd.Next(1, 10);
             int num1 = rnd.Next(1, 10); int premio1 = rnd.Next(1, 100);
@@ -227,6 +231,8 @@
                 Console.ReadKey();
                 return;
             }
+            
+            saldo -= 5;
             
             int numPremiado = rnd.Next(1000, 10000);
             int numJogador = 0;
